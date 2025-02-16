@@ -1,4 +1,3 @@
-// Rider.java
 public class Rider extends User {
     private String preferredPickupLocation;
 
@@ -8,6 +7,5 @@ public class Rider extends User {
         this.preferredPickupLocation = preferredPickupLocation;
     }
 
-    // Getters and setters
     public String getPreferredPickupLocation() { return preferredPickupLocation; }
 }
