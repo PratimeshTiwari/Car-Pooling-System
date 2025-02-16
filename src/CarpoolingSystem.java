@@ -1,4 +1,3 @@
-// Add these imports at the top of CarpoolingSystem.java
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +17,6 @@ public class CarpoolingSystem {
         users = new HashMap<>();
     }
 
-    // Create carpool method
     public String createCarPool(Driver driver,
                                 String source,
                                 String destination,
@@ -51,7 +49,6 @@ public class CarpoolingSystem {
         return poolId;
     }
 
-    // Authentication methods
     public boolean registerUser(User user) {
         if (!users.containsKey(user.getUserId())) {
             users.put(user.getUserId(), user);
@@ -73,7 +70,6 @@ public class CarpoolingSystem {
         return null;
     }
 
-    // Carpool search and filter methods
     public List<CarPool> getAvailableCarpools() {
         return carpools.stream()
                 .filter(cp -> cp.getAvailableSeats() > 0 && cp.isActive())
@@ -143,8 +139,6 @@ public class CarpoolingSystem {
         }
         return false;
     }
-
-    // Utility methods
     public CarPool getCarPoolById(String poolId) {
         return carpools.stream()
                 .filter(cp -> cp.getPoolId().equals(poolId))
@@ -165,7 +159,6 @@ public class CarpoolingSystem {
                 .collect(Collectors.toList());
     }
 
-    // Additional utility methods
     public int getTotalActiveCarpools() {
         return (int) carpools.stream()
                 .filter(CarPool::isActive)
