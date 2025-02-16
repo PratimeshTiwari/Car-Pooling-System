@@ -45,7 +45,6 @@ public class CarPool {
         this.status = "ACTIVE";
     }
 
-    // Getters and setters
     public String getPoolId() {
         return poolId;
     }
@@ -182,7 +181,6 @@ public class CarPool {
         this.status = status;
     }
 
-    // Utility methods
     public boolean requestToJoin(Rider rider) {
         if (availableSeats > 0 && !pendingRequests.contains(rider) && !riders.contains(rider)) {
             pendingRequests.add(rider);
@@ -220,10 +218,6 @@ public class CarPool {
     public void cancelRide() {
         this.status = "CANCELLED";
     }
-
-//    public List<Rider> getPendingRequests() {
-//        return new ArrayList<>(pendingRequests); // Return a copy to prevent external modification
-//    }
 
     @Override
     public String toString() {
