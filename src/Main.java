@@ -1,4 +1,3 @@
-// Main.java
 import java.util.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,10 +21,10 @@ public class Main {
                 int choice;
                 try {
                     choice = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine();
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine(); // clear invalid input
+                    scanner.nextLine(); 
                     continue;
                 }
 
@@ -45,7 +44,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("An unexpected error occurred. Please try again.");
-                scanner.nextLine(); // clear any remaining input
+                scanner.nextLine();
             }
         }
     }
@@ -68,10 +67,10 @@ public class Main {
                     break;
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine(); // Clear the invalid input
+                    scanner.nextLine(); 
                 }
             }
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             System.out.print("Enter userId: ");
             String userId = scanner.nextLine().trim();
@@ -138,17 +137,17 @@ public class Main {
                     break;
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine(); // Clear the invalid input
+                    scanner.nextLine();
                 }
             }
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
 
             Driver driver = new Driver(userId, name, password, email, carModel, license, seats);
             if (!system.registerUser(driver)) {
                 throw new IllegalArgumentException("User ID already exists");
             }
         } catch (IllegalArgumentException e) {
-            throw e; // Rethrow to be caught by the outer try-catch
+            throw e; 
         }
     }
 
@@ -165,7 +164,7 @@ public class Main {
                 throw new IllegalArgumentException("User ID already exists");
             }
         } catch (IllegalArgumentException e) {
-            throw e; // Rethrow to be caught by the outer try-catch
+            throw e; 
         }
     }
 
@@ -201,7 +200,6 @@ public class Main {
         }
     }
 
-    // Add methods for driver and rider menus
     private static void showDriverMenu(Driver driver) {
         while (true) {
             try {
@@ -216,10 +214,10 @@ public class Main {
                 int choice;
                 try {
                     choice = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine(); // clear invalid input
+                    scanner.nextLine(); 
                     continue;
                 }
 
@@ -243,12 +241,11 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("An unexpected error occurred. Please try again.");
-                scanner.nextLine(); // clear any remaining input
+                scanner.nextLine(); 
             }
         }
     }
 
-    // Add this new method to handle ride requests
     private static void manageRideRequests(Driver driver) {
         System.out.println("\n=== Manage Ride Requests ===");
         List<CarPool> myCarpools = system.getDriverCarpools(driver.getUserId());
@@ -322,10 +319,10 @@ public class Main {
                 int choice;
                 try {
                     choice = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine(); // clear invalid input
+                    scanner.nextLine();
                     continue;
                 }
 
@@ -346,7 +343,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("An unexpected error occurred. Please try again.");
-                scanner.nextLine(); // clear any remaining input
+                scanner.nextLine(); 
             }
         }
     }
@@ -394,7 +391,7 @@ public class Main {
         }
     }
 
-    // Helper methods for Rider menu
+
     private static void viewAvailableCarpools() {
         System.out.println("\n=== Available Carpools ===");
         List<CarPool> availablePools = system.getAvailableCarpools();
@@ -521,7 +518,7 @@ public class Main {
                     break;
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine(); // Clear the invalid input
+                    scanner.nextLine(); 
                 }
             }
 
@@ -537,10 +534,10 @@ public class Main {
                     break;
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a valid price.");
-                    scanner.nextLine(); // Clear the invalid input
+                    scanner.nextLine(); 
                 }
             }
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             System.out.print("Allow smoking? (y/n): ");
             boolean smoking = scanner.nextLine().toLowerCase().startsWith("y");
@@ -614,14 +611,14 @@ public class Main {
             try {
                 System.out.print(prompt);
                 int value = scanner.nextInt();
-                scanner.nextLine(); // consume newline
+                scanner.nextLine(); 
                 if (value >= min && value <= max) {
                     return value;
                 }
                 System.out.printf("Please enter a number between %d and %d.\n", min, max);
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
-                scanner.nextLine(); // Clear the invalid input
+                scanner.nextLine(); 
             }
         }
     }
@@ -631,109 +628,18 @@ public class Main {
             try {
                 System.out.print(prompt);
                 double value = scanner.nextDouble();
-                scanner.nextLine(); // consume newline
+                scanner.nextLine(); 
                 if (value >= min) {
                     return value;
                 }
                 System.out.printf("Please enter a number greater than or equal to %.2f.\n", min);
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine(); // Clear the invalid input
+                scanner.nextLine(); 
             }
         }
     }
-//    private static void searchAndJoinPool(Rider rider) {
-//        System.out.println("\n=== Search for Carpools with Preferences ===");
-//
-//        System.out.print("Enter source city (or press Enter to skip): ");
-//        String source = scanner.nextLine().trim();
-//
-//        System.out.print("Enter destination city (or press Enter to skip): ");
-//        String destination = scanner.nextLine().trim();
-//
-//        System.out.print("Enter date (DD/MM/YYYY) (or press Enter to skip): ");
-//        String date = scanner.nextLine().trim();
-//
-//        // Preferences
-//        Map<String, Boolean> preferences = new HashMap<>();
-//
-//        // Ask for all preferences
-//        System.out.println("\nRide Preferences:");
-//
-//        System.out.print("Filter for non-smoking rides? (y/n): ");
-//        if (scanner.nextLine().toLowerCase().startsWith("y")) {
-//            preferences.put("smokingAllowed", false);
-//        }
-//
-//        System.out.print("Filter for no pets allowed? (y/n): ");
-//        if (scanner.nextLine().toLowerCase().startsWith("y")) {
-//            preferences.put("petsAllowed", false);
-//        }
-//
-//        System.out.print("Filter for music allowed? (y/n): ");
-//        if (scanner.nextLine().toLowerCase().startsWith("y")) {
-//            preferences.put("musicAllowed", true);
-//        }
-//
-//        System.out.print("Filter for female-only rides? (y/n): ");
-//        if (scanner.nextLine().toLowerCase().startsWith("y")) {
-//            preferences.put("femaleOnly", true);
-//        }
-//
-//        // Add price range filter
-//        System.out.print("Maximum price willing to pay (or 0 for no limit): ");
-//        double maxPrice = scanner.nextDouble();
-//        scanner.nextLine(); // consume newline
-//
-//        List<CarPool> availablePools = system.searchCarpools(source, destination, date, preferences)
-//                .stream()
-//                .filter(cp -> maxPrice == 0 || cp.getPrice() <= maxPrice)
-//                .collect(Collectors.toList());
-//
-//        if (availablePools.isEmpty()) {
-//            System.out.println("\nNo matching carpools found.");
-//            System.out.println("Tips:");
-//            System.out.println("- Try searching without preferences first");
-//            System.out.println("- Use partial city names");
-//            System.out.println("- Leave date empty to see all available rides");
-//            System.out.println("- Reduce the number of preferences");
-//            return;
-//        }
-//
-//        System.out.println("\nFound " + availablePools.size() + " matching carpools:");
-//
-//        for (CarPool pool : availablePools) {
-//            System.out.println("\n----------------------------------------");
-//            System.out.println("Pool ID: " + pool.getPoolId());
-//            System.out.println("Driver: " + pool.getDriver().getName());
-//            System.out.println("From: " + pool.getSource());
-//            System.out.println("Pickup Location: " + pool.getExactPickupLocation());
-//            System.out.println("To: " + pool.getDestination());
-//            System.out.println("Drop Location: " + pool.getExactDropLocation());
-//            System.out.println("Date/Time: " + pool.getDateTime());
-//            System.out.println("Available Seats: " + pool.getAvailableSeats());
-//            System.out.println("Price per seat: $" + pool.getPrice());
-//            System.out.println("Ride Preferences:");
-//            System.out.println("- Smoking: " + (pool.isSmokingAllowed() ? "Allowed" : "Not allowed"));
-//            System.out.println("- Pets: " + (pool.isPetsAllowed() ? "Allowed" : "Not allowed"));
-//            System.out.println("- Music: " + (pool.isMusicAllowed() ? "Allowed" : "Not allowed"));
-//            if (pool.isFemaleOnly()) System.out.println("- Female riders only");
-//            if (!pool.getAdditionalRules().isEmpty())
-//                System.out.println("Additional rules: " + pool.getAdditionalRules());
-//            System.out.println("----------------------------------------");
-//        }
-//
-//        System.out.print("\nEnter Pool ID to request joining (or 0 to cancel): ");
-//        String poolId = scanner.nextLine();
-//
-//        if (!poolId.equals("0")) {
-//            if (system.requestToJoinPool(poolId, rider)) {
-//                System.out.println("Request sent successfully! Waiting for driver's approval.");
-//            } else {
-//                System.out.println("Failed to send request. Pool might be full or invalid.");
-//            }
-//        }
-//    }
+
 private static void searchAndJoinPool(Rider rider) {
     System.out.println("\n=== Search for Carpools with Preferences ===");
 
@@ -746,10 +652,8 @@ private static void searchAndJoinPool(Rider rider) {
     System.out.print("Enter date (DD/MM/YYYY) (or press Enter to skip): ");
     String date = scanner.nextLine().trim();
 
-    // Preferences
     Map<String, Boolean> preferences = new HashMap<>();
 
-    // Ask for all preferences
     System.out.println("\nRide Preferences:");
 
     System.out.print("Filter for non-smoking rides? (y/n): ");
@@ -772,28 +676,23 @@ private static void searchAndJoinPool(Rider rider) {
         preferences.put("femaleOnly", true);
     }
 
-    // Add price range filter
     System.out.print("Maximum price willing to pay (or 0 for no limit): ");
     double maxPrice = scanner.nextDouble();
-    scanner.nextLine(); // consume newline
+    scanner.nextLine(); 
 
-    // Get exact matches
     List<CarPool> exactMatches = system.searchCarpools(source, destination, date, preferences)
             .stream()
             .filter(cp -> maxPrice == 0 || cp.getPrice() <= maxPrice)
             .collect(Collectors.toList());
 
-    // Display exact matches if found
     if (!exactMatches.isEmpty()) {
         System.out.println("\nFound " + exactMatches.size() + " exact matches:");
         displayCarpools(exactMatches, true);
     } else {
         System.out.println("\nNo exact matches found with your preferences.");
 
-        // Get all available rides without preferences
         List<CarPool> allAvailable = system.getAvailableCarpools();
 
-        // First show rides with matching source/destination but different preferences
         List<CarPool> locationMatches = allAvailable.stream()
                 .filter(cp -> (source.isEmpty() ||
                         cp.getSource().toLowerCase().contains(source.toLowerCase())) &&
@@ -807,7 +706,6 @@ private static void searchAndJoinPool(Rider rider) {
             displayCarpools(locationMatches, false);
         }
 
-        // Then show other available rides
         List<CarPool> otherRides = allAvailable.stream()
                 .filter(cp -> !locationMatches.contains(cp))
                 .collect(Collectors.toList());
@@ -836,7 +734,6 @@ private static void searchAndJoinPool(Rider rider) {
     }
 }
 
-    // Helper method to display carpools
     private static void displayCarpools(List<CarPool> carpools, boolean isExactMatch) {
         for (CarPool pool : carpools) {
             System.out.println("\n----------------------------------------");
