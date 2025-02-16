@@ -1,4 +1,3 @@
-// Driver.java
 public class Driver extends User {
     private String carModel;
     private String licenseNumber;
@@ -12,7 +11,6 @@ public class Driver extends User {
         this.seatsAvailable = seatsAvailable;
     }
 
-    // Getters and setters
     public String getCarModel() { return carModel; }
     public String getLicenseNumber() { return licenseNumber; }
     public int getSeatsAvailable() { return seatsAvailable; }
